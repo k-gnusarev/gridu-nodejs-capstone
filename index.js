@@ -9,7 +9,13 @@ app.get('/', (req, res) => {
   res.sendFile(__dirname + '/views/index.html')
 });
 
-
+app.post('/api/users', (req, res) => {
+  console.log(req)
+  console.log('pow')
+})
+app.get('/api/users')
+app.post('/api/users/:_id/exercises')
+app.get('/api/users/:_id/logs')
 
 
 
