@@ -1,30 +1,22 @@
 export class HttpException {
-  constructor(errorMessage) {
-    this.errorMessage = errorMessage
+  constructor(message) {
+    this.message = message
   }
 }
 
 export class NotFoundException extends HttpException {
-  constructor(errorMessage) {
-    super(errorMessage);
+  constructor(message) {
+    super(message);
 
-    this.errorCode = 404
-  }
-}
-
-export class ForbiddenException extends HttpException {
-  constructor(errorMessage) {
-    super(errorMessage);
-
-    this.errorCode = 403
+    this.code = 404
   }
 }
 
 export class BadRequestException extends HttpException {
-  constructor(errorMessage) {
-    super(errorMessage);
+  constructor(message) {
+    super(message);
 
-    this.errorCode = 400
+    this.code = 400
   }
 }
 
