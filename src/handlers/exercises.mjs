@@ -1,12 +1,12 @@
-import {validateDate} from "../utils/validateDate.mjs";
-import {validateDuration} from "../utils/validateDuration.mjs";
-import {ADD_EXERCISE, GET_EXERCISE} from "./queries.mjs";
-import {db} from "../../index.mjs";
-import {getUser} from "./users.mjs";
-import {NotFoundException} from "../errors/errors.mjs";
-import {validateDescription} from "../utils/validateDescription.mjs";
-import {getFormattedDate} from "../utils/getFormattedDate.mjs";
-import {getTimestamp} from "../utils/getTimestamp.mjs";
+import { validateDate } from '../utils/validateDate.mjs'
+import { validateDuration } from '../utils/validateDuration.mjs'
+import { ADD_EXERCISE, GET_EXERCISE } from './queries.mjs'
+import { getUser } from './users.mjs'
+import { NotFoundException } from '../errors/errors.mjs'
+import { validateDescription } from '../utils/validateDescription.mjs'
+import { getFormattedDate } from '../utils/getFormattedDate.mjs'
+import { getTimestamp } from '../utils/getTimestamp.mjs'
+import { db } from '../db/index.mjs'
 
 export const createExercise = async (req, res) => {
   try {

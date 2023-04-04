@@ -1,21 +1,21 @@
-import {getUser} from "./users.mjs";
-import {NotFoundException} from "../errors/errors.mjs";
-import {db} from "../../index.mjs";
-import {validateDate} from "../utils/validateDate.mjs";
-import {getLimitedSearchString} from "../utils/getLimitedSearchString.mjs";
-import {getTimestamp} from "../utils/getTimestamp.mjs";
-import {getFormattedDate} from "../utils/getFormattedDate.mjs";
+import { getUser} from './users.mjs'
+import { BadRequestException, NotFoundException } from '../errors/errors.mjs'
+import { validateDate } from '../utils/validateDate.mjs'
+import { getLimitedSearchString } from '../utils/getLimitedSearchString.mjs'
+import { getTimestamp } from '../utils/getTimestamp.mjs'
+import { getFormattedDate } from '../utils/getFormattedDate.mjs'
+import { db } from '../db/index.mjs'
 
 export const getExerciseLogs = async (req, res) => {
   try {
-    const {_id} = req.params
+    const { _id } = req.params
     const user = await getUser(_id)
 
     if (!user) {
       throw new NotFoundException('User not found')
     }
 
-    const {from, to, limit} = req.query
+    const { from, to, limit } = req.query
 
     if (from) {
       validateDate(from)
@@ -23,6 +23,10 @@ export const getExerciseLogs = async (req, res) => {
 
     if (to) {
       validateDate(to)
+    }
+
+    if(limit && Number.isNaN(+limit)) {
+      throw new BadRequestException('Limit should be a number')
     }
 
     const queryString = getLimitedSearchString({ from, to, limit })

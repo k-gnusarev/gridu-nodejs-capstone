@@ -6,7 +6,7 @@ export class HttpException {
 
 export class NotFoundException extends HttpException {
   constructor(message) {
-    super(message);
+    super(message)
 
     this.code = 404
   }
@@ -14,7 +14,7 @@ export class NotFoundException extends HttpException {
 
 export class BadRequestException extends HttpException {
   constructor(message) {
-    super(message);
+    super(message)
 
     this.code = 400
   }

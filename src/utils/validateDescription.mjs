@@ -1,4 +1,4 @@
-import {BadRequestException} from "../errors/errors.mjs";
+import { BadRequestException } from '../errors/errors.mjs'
 
 export const validateDescription = (description) => {
   if (!description) {

@@ -1,4 +1,4 @@
-import {BadRequestException} from "../errors/errors.mjs";
+import { BadRequestException } from '../errors/errors.mjs'
 
 export const validateDuration = (duration) => {
   if (duration && duration.length) {
