@@ -5,16 +5,22 @@ import {db} from "../../index.mjs";
 import {getUser} from "./users.mjs";
 import {NotFoundException} from "../errors/errors.mjs";
 import {validateDescription} from "../utils/validateDescription.mjs";
+import {getFormattedDate} from "../utils/getFormattedDate.mjs";
 import {getTimestamp} from "../utils/getTimestamp.mjs";
 
 export const createExercise = async (req, res) => {
   try {
-    const {duration, date, description} = req.body
+    const {duration, description} = req.body
+    let {date} = req.body
     const {_id} = req.params
     const user = await getUser(_id)
 
     if (!user) {
       throw new NotFoundException('User not found')
+    }
+    
+    if(!date) {
+      date = getFormattedDate(new Date().getTime())
     }
 
     validateDuration(duration)
